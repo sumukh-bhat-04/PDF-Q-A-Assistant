@@ -11,15 +11,15 @@ from rag_engine import (
     query_rag
 )
 
-# To Load environment variables from .env
+# Load environment variables from .env
 load_dotenv()
 
 # Constants (hides advanced configuration for clean UX)
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 200
 
-# Retrieving API key
-api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+
+api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 
 # Page config
 st.set_page_config(
@@ -218,9 +218,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Pre-flight Check: Ensure Gemini API key is configured
+# Pre-flight Check: Ensure the LLM API key is configured
 if not api_key:
-    st.error("🔑 **Gemini API Key missing!** Please add your API key to the `.env` file in the project root directory (e.g. `GEMINI_API_KEY=your_key_here`).")
+    st.error("🔑 **Groq API key missing!** Please add your API key to the `.env` file in the project root directory (for example: `GROQ_API_KEY=your_key_here`).")
     st.stop()
 
 # Initialize Session States
