@@ -77,10 +77,11 @@ Generated Answer
 ```text
 PDF-Q-A-Assistant/
 │
-├── app.py
-├── requirements.txt
-├── README.md
-└── ...
+├── app.py              # Streamlit application
+├── rag_engine.py       # RAG pipeline and document processing
+├── requirement.txt     # Project dependencies
+├── .env.example        # Environment variable template
+└── README.md           # Project documentation
 ```
 The project structure may vary depending on the current implementation.
 
