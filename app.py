@@ -11,14 +11,14 @@ from rag_engine import (
     query_rag
 )
 
-# Load environment variables from .env
+# To Load environment variables from .env
 load_dotenv()
 
 # Constants (hides advanced configuration for clean UX)
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 200
 
-# Retrieve API key
+# Retrieving API key
 api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 
 # Page config
