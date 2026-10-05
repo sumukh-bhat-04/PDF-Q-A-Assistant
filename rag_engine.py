@@ -63,7 +63,7 @@ def get_rag_chain(vector_store: Chroma, api_key: str = None):
         ("human", "{input}"),
     ])
     
-    # Create the combine documents chain and the final retrieval chain
+    # Create combine documents chain and the final retrieval chain
     question_answer_chain = create_stuff_documents_chain(llm, prompt)
     retrieval_chain = create_retrieval_chain(retriever, question_answer_chain)
     
