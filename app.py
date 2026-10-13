@@ -18,7 +18,6 @@ load_dotenv()
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 200
 
-
 api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 
 # Page config
@@ -220,7 +219,15 @@ st.markdown("""
 
 # Pre-flight Check: Ensure the LLM API key is configured
 if not api_key:
+<<<<<<< HEAD
     st.error("🔑 **Groq API key missing!** Please add your API key to the `.env` file in the project root directory (for example: `GROQ_API_KEY=your_key_here`).")
+=======
+    st.error("Gemini API key missing. It is still required for document embeddings.")
+    st.stop()
+
+if not groq_api_key:
+    st.error("Groq API key missing. Please check GROQ_API_KEY in your .env file.")
+>>>>>>> 96d02fa (feat: integrate Groq GPT in Streamlit application)
     st.stop()
 
 # Initialize Session States
@@ -260,11 +267,11 @@ if uploaded_file:
                 chunks = chunk_documents(raw_docs, CHUNK_SIZE, CHUNK_OVERLAP)
                 
                 # 3. Create vector store
-                vector_store = create_vector_store(chunks, api_key=api_key)
-                
+                vector_store = create_vector_store(chunks,api_key=api_key)
+
                 # Cache references in state
                 st.session_state.vector_store = vector_store
-                st.session_state.rag_chain = get_rag_chain(vector_store, api_key=api_key)
+                st.session_state.rag_chain = get_rag_chain(vector_store,api_key=groq_api_key)
                 st.session_state.pdf_name = file_id
                 st.session_state.chat_history = []  # Reset conversation for new document
                 st.session_state.stats = {
